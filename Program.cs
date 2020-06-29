@@ -9,7 +9,136 @@ namespace Test
 {
     class Program
     {
-        /*
+        static void Insert(int N, Client[] client)
+        {
+            Console.WriteLine("Вывести всех клиентов банка? [Да/Нет]");
+            string ans=Console.ReadLine();
+            string field;
+            string value;
+            switch (ans)
+            {
+                case "да":
+                {
+                    Print(N,client);
+                    break;
+                }
+                case "д":
+                {
+                    Print(N,client);
+                    break;
+                }
+                case "yes":
+                {
+                    Print(N,client);
+                    break;
+                }
+                case "y":
+                {
+                    Print(N,client);
+                    break;
+                }
+                case "n":
+                {
+                    Console.WriteLine("Введите поле, по которому хотите отфильтровать всех клиентов банка:");
+                    field=Console.ReadLine();
+                    Console.WriteLine("Введите искомое значение данного поля:");
+                    value=Console.ReadLine();
+                    Filter(field,value,N,client);
+                    break;
+                }
+                case "no":
+                {
+                    Console.WriteLine("Введите поле, по которому хотите отфильтровать всех клиентов банка:");
+                    field=Console.ReadLine();
+                    Console.WriteLine("Введите искомое значение данного поля:");
+                    value=Console.ReadLine();
+                    Filter(field,value,N,client);
+                    break;
+                }
+                case "нет":
+                {
+                    Console.WriteLine("Введите поле, по которому хотите отфильтровать всех клиентов банка:");
+                    field=Console.ReadLine();
+                    Console.WriteLine("Введите искомое значение данного поля:");
+                    value=Console.ReadLine();
+                    Filter(field,value,N,client);
+                    break;
+                }
+                case "н":
+                {
+                    Console.WriteLine("Введите поле, по которому хотите отфильтровать всех клиентов банка:");
+                    field=Console.ReadLine();
+                    Console.WriteLine("Введите искомое значение данного поля:");
+                    value=Console.ReadLine();
+                    Filter(field,value,N,client);
+                    break;
+                }
+                default:
+                {
+                    Console.WriteLine("Только да или нет");
+                    Insert(N,client);
+                    break;
+                }
+            }
+        }
+        static void Repeat(int N, Client[] client)
+        {
+            Console.WriteLine("Продолжить работу?[да/нет]");
+            string ans=Console.ReadLine();
+            switch (ans)
+            {
+                case "да":
+                {
+                    Insert(N,client);
+                    break;
+                }
+                case "д":
+                {
+                    Insert(N,client);
+                    break;
+                }
+                case "yes":
+                {
+                    Insert(N,client);
+                    break;
+                }
+                case "y":
+                {
+                    Insert(N,client);
+                    break;
+                }
+                case "n":
+                {
+                    break;
+                }
+                case "no":
+                {
+                    break;
+                }
+                case "нет":
+                {
+                    break;
+                }
+                case "н":
+                {
+                    break;
+                }
+                default:
+                {
+                    Console.WriteLine("Только да или нет");
+                    Repeat(N,client);
+                    break;
+                }
+            }
+        }
+        static void Print(int N, Client[] client)
+        {
+            for(int i=0;i<N;i++)
+            {
+                client[i].Print();
+            }
+            Repeat(N,client);
+        }
         static void Filter (string field, string value, int N, Client[] client)
         {
             switch (field)
@@ -18,8 +147,7 @@ namespace Test
                 {
                     for (int i=0;i<N;i++)
                     {
-                        if((client[i].contributer.GetFamilyName()==value)||(client[i].creditor.GetFamilyName()==value)||
-                        (client[i].organization.GetName()==value)||())
+                        if(client[i].getName()==value)
                         {
                             client[i].Print();
                         } 
@@ -28,18 +156,13 @@ namespace Test
                 }
                 case "date":
                 {
-                    break;
-                }
-                case "percent":
-                {
-                    break;
-                }
-                case "summ":
-                {
-                    break;
-                }
-                case "debt":
-                {
+                    for (int i=0;i<N;i++)
+                    {
+                        if(client[i].getDate()==value)
+                        {
+                            client[i].Print();
+                        } 
+                    }
                     break;
                 }
                 default:
@@ -47,8 +170,9 @@ namespace Test
                     break;
                 }
             }
+            Repeat(N,client);
         }
-        */
+        
         static void Main(string[] args)
         {
 // Считываем значения
@@ -67,26 +191,7 @@ namespace Test
                 client[i]=new Client();
                 string[] words = str[i].Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
                 client[i].setName(words[1]);
-                client[i].setDate(words[2]);
-                /*
-                string[] checkDate = words[2].Split(new char[]{'.'}, StringSplitOptions.RemoveEmptyEntries);
-                        try
-                        {
-                            if (((int.Parse(checkDate[0])<32) && (int.Parse(checkDate[0])>0))&&((short.Parse(checkDate[1])<13) && 
-                         (short.Parse(checkDate[1])>0))&&(((short.Parse(checkDate[2])<2021) && (short.Parse(checkDate[2])>1950))))
-                          {
-                                client[i].setDate(words[2]);
-                            }
-                            else
-                            {
-                                client[i].setDate("Некорректная дата");
-                            }
-                        }
-                        catch (FormatException)
-                        {
-                            client[i].setDate("Некорректная дата");
-                        }
-                        */
+                client[i].setDate(words[2]);                
                 switch(words[0])
                 {
                     case "Кредитор":
@@ -120,11 +225,7 @@ namespace Test
             }
 
 // Выводим массив в консоль
-            for(int i=0;i<N;i++)
-            {
-                client[i].Print();
-            }
-
+            Insert(N,client);
         }
     }
 }
