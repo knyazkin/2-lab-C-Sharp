@@ -158,7 +158,7 @@ namespace Clients
                         Console.WriteLine("Фамилия:"+creditor.GetFamilyName());
                         Console.WriteLine("Дата выдачи кредита:"+creditor.GetDate());
                         Console.WriteLine("Размер кредита:"+creditor.GetLoanAmount());
-                        Console.WriteLine("Процент по кредиту:"+creditor.GetLoanPercentage());
+                        Console.WriteLine("Процент по кредиту:"+creditor.GetLoanPercentage()+"%");
                         Console.WriteLine("Остаток долга:"+creditor.GetDebt());
                         Console.WriteLine();
                         break;
@@ -166,7 +166,7 @@ namespace Clients
                         Console.WriteLine("Фамилия:"+contributer.GetFamilyName());
                         Console.WriteLine("Дата открытия вклада:"+contributer.GetDate());
                         Console.WriteLine("Размер вклада:"+contributer.GetDepositAmount());
-                        Console.WriteLine("Процент по вкладу:"+contributer.GetDepositPercentage());
+                        Console.WriteLine("Процент по вкладу:"+contributer.GetDepositPercentage()+"%");
                         Console.WriteLine();
                         break;
                     case "organization":
