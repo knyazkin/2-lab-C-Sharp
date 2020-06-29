@@ -8,7 +8,6 @@ namespace Clients
         public Contributer contributer = new Contributer();
         public Creditor creditor = new Creditor();
         public Organization organization = new Organization();
-        public Unknown unknown = new Unknown();
         private string name;
         public string getName()
         {
@@ -25,7 +24,23 @@ namespace Clients
         }
         public void setDate(string _date)
         {
-            date=_date;
+            string[] checkDate = _date.Split(new char[]{'.'}, StringSplitOptions.RemoveEmptyEntries);
+            try
+            {
+                if (((short.Parse(checkDate[0])<32) && (short.Parse(checkDate[0])>0))&&((short.Parse(checkDate[1])<13) && 
+                (short.Parse(checkDate[1])>0))&&(((short.Parse(checkDate[2])<2021) && (short.Parse(checkDate[2])>1950))))
+                    {
+                        date=_date;
+                    }
+                    else
+                    {
+                        date="Некорректная дата";
+                    }
+            }
+            catch (Exception)
+            {
+                date="Некорректная дата";
+            }
         }
 
         private string type;

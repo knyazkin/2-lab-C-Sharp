@@ -67,6 +67,8 @@ namespace Test
                 client[i]=new Client();
                 string[] words = str[i].Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
                 client[i].setName(words[1]);
+                client[i].setDate(words[2]);
+                /*
                 string[] checkDate = words[2].Split(new char[]{'.'}, StringSplitOptions.RemoveEmptyEntries);
                         try
                         {
@@ -84,12 +86,12 @@ namespace Test
                         {
                             client[i].setDate("Некорректная дата");
                         }
+                        */
                 switch(words[0])
                 {
                     case "Кредитор":
                     {
-                        client[i].setType("creditor");
-                                                
+                        client[i].setType("creditor");                  
                         client[i].creditor.SetLoanAmount(int.Parse(words[3]));
                         client[i].creditor.SetLoanPercentage(float.Parse(words[4]));
                         client[i].creditor.SetDebt(ushort.Parse(words[5]));
@@ -97,23 +99,20 @@ namespace Test
                     }
                     case "Вкладчик":
                     {
-                        client[i].setType("contributer");
-                        
+                        client[i].setType("contributer");                       
                         client[i].contributer.SetDepositAmount(int.Parse(words[3]));
                         client[i].contributer.SetDepositPercentage(float.Parse(words[4]));
                         break;
                     }
                     case "Организация":
                     {
-                        client[i].setType("organization");
-                        
+                        client[i].setType("organization");   
                         client[i].organization.SetAccountNumber(ushort.Parse(words[3]));
                         client[i].organization.SetSumm(int.Parse(words[4]));
                         break;
                     }
                     default:
                     {
-                        client[i].setType("unknowm");
                         break;
                     }
 
