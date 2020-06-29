@@ -47,8 +47,7 @@ namespace Test
                         catch (FormatException)
                         {
                             client[i].creditor.SetDate("Некорректная дата");
-                        }
-                        
+                        }                        
                         client[i].creditor.SetLoanAmount(int.Parse(words[3]));
                         client[i].creditor.SetLoanPercentage(float.Parse(words[4]));
                         client[i].creditor.SetDebt(ushort.Parse(words[5]));
@@ -100,6 +99,25 @@ namespace Test
                         client[i].organization.SetSumm(int.Parse(words[4]));
                         break;
                     default:
+                        client[i].setType("unknowm");
+                        client[i].unknown.SetName(words[1]);
+                        string[] checkDateU = words[2].Split(new char[]{'.'}, StringSplitOptions.RemoveEmptyEntries);
+                        try
+                        {
+                            if (((int.Parse(checkDateU[0])<32) && (int.Parse(checkDateU[0])>0))&&((short.Parse(checkDateU[1])<13) && 
+                            (short.Parse(checkDateU[1])>0))&&(((short.Parse(checkDateU[2])<2021) && (short.Parse(checkDateU[2])>1950))))
+                            {
+                                client[i].unknown.SetDate(words[2]);
+                            }
+                            else
+                            {
+                                client[i].unknown.SetDate("Некорректная дата");
+                            }
+                            }
+                        catch (FormatException)
+                        {
+                            client[i].unknown.SetDate("Некорректная дата");
+                        }
                         break;
 
                 }

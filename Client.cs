@@ -8,6 +8,7 @@ namespace Clients
         public Contributer contributer = new Contributer();
         public Creditor creditor = new Creditor();
         public Organization organization = new Organization();
+        public Unknown unknown = new Unknown();
         private string type;
         public string getType()
         {
@@ -44,6 +45,8 @@ namespace Clients
                         Console.WriteLine();
                         break;
                     default:
+                        Console.WriteLine("Неизвестный клиент "+unknown.GetName());
+                        Console.WriteLine("Дата подписания договора: "+unknown.GetDate());
                         break;
                 }
         }
