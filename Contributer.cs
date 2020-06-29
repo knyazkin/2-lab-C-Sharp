@@ -6,7 +6,7 @@ namespace TypesOfClients
     {
         private string familyName;
         private string date;
-        private ushort depositAmount;
+        private int depositAmount;
         private float depositPercentage;
 // сеттеры и геттеры
         public string GetFamilyName()
@@ -25,11 +25,11 @@ namespace TypesOfClients
         {
             date=d;
         }
-        public ushort GetDepositAmount()
+        public int GetDepositAmount()
         {
             return depositAmount;
         }
-        public void SetDepositAmount(ushort d)
+        public void SetDepositAmount(int d)
         {
             depositAmount=d;
         }

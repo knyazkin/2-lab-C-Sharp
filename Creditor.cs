@@ -6,7 +6,7 @@ namespace TypesOfClients
     {
         private string familyName;
         private string date;
-        private ushort loanAmount;
+        private int loanAmount;
         private float loanPercentage;
         private ushort debt;  
 // сеттеры и геттеры
@@ -26,11 +26,11 @@ namespace TypesOfClients
         {
             date=d;
         }
-        public ushort GetLoanAmount()
+        public int GetLoanAmount()
         {
             return loanAmount;
         }
-        public void SetLoanAmount(ushort d)
+        public void SetLoanAmount(int d)
         {
             loanAmount=d;
         }
